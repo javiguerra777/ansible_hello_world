@@ -1,8 +1,10 @@
 ---
 - name: Hello World
   hosts: server
+  vars:
+    message: "{{ lookup('env', 'MESSAGE') | default('please change me', true) }}"
   tasks:
     - name: Print Hello World
       ansible.builtin.debug:
-        msg: "Hello, World!"
+        msg: "Hello World, here is a message {{ message }}"
 ...

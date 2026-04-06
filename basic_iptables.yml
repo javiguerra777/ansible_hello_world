@@ -43,6 +43,13 @@
         jump: ACCEPT
         comment: "Allow HTTPS"
 
+    - name: Allow ICMP (ping)
+      ansible.builtin.iptables:
+        chain: INPUT
+        protocol: icmp
+        jump: ACCEPT
+        comment: "Allow all ICMP traffic"
+
     - name: Drop all other incoming traffic
       ansible.builtin.iptables:
         chain: INPUT
